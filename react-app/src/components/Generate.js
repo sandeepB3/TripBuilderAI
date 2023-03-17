@@ -6,7 +6,9 @@ const Generate = () => {
   
 
    return(
-      <TravelForm />
+      <div>
+         <TravelForm />
+      </div>
    );
 
 }
