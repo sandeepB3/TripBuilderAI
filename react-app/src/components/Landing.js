@@ -16,6 +16,7 @@ import FavoriteIcon from '@material-ui/icons/Favorite';
 import Footer from './Footer';
 import Carousel from './Carousel';
 import Benefits from './Benefits';
+import Features from './Features';
 // import Carousel from 'react-material-ui-carousel';
 // import { Carousel }  from 'react-responsive-carousel';
 // import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -135,6 +136,8 @@ export default function Landing() {
   return (
     <React.Fragment>
       <Carousel/>
+
+      <Features/>
       <main>
    
         {/* Grid Page: */}
@@ -179,7 +182,7 @@ export default function Landing() {
       </Container>
     </React.Fragment>
     {/* See more button */}
-    {/* <div className={classes.container}>
+    <div className={classes.container}>
       <Button
         variant="contained"
         color="primary"
@@ -192,7 +195,8 @@ export default function Landing() {
           </div>
         </div>
       </Button>
-    </div> */}
+    </div>
+
       </main>
 <br/>
 <Benefits/>

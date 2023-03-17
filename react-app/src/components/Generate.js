@@ -3,12 +3,13 @@ import "../styles/TravelForm.css";
 import axios from "axios";
 import { AuthContext } from "../contexts/AuthContext";
 import "../styles/Itinerary.css";
+import Output from "./Output";
 
 let optimalHotel = {};
 let attractions = {};
 let gptResponse = {};
 
-const key = "8da7aab61fmsh84446c92f86b83ap157163jsn045d13765ccd";
+const key = "1274c82b6amshb81c50e57d65f2ap184a24jsn198e9c0e8e6b";
 
 function Generate() {
   const [destination, setDestination] = useState("");
@@ -178,6 +179,7 @@ function Generate() {
       {showOutput ? (
         <>
           <h3>Output</h3>
+          <Output/>
           <p>{apiOutput}</p>
         </>
       ) : (

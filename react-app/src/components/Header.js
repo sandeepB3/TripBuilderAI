@@ -82,9 +82,11 @@ export default function Header({ isSignedIn, onSignOut }) {
       >
         <Toolbar className={classes.toolbar}>
         <div>
+          <RouterLink to="/">
         <TbAffiliateFilled style={{width: '50px', height: '50px'}}/>
-        {/* <img src={travel} position='static' alignItems='left' width={20px}/> */}
+        </RouterLink>
         </div>
+        
           {/* <Typography
             variant="h6"
             color="inherit"
