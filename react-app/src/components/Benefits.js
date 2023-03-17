@@ -54,9 +54,9 @@ const Benefits = () => {
                     Optimizes your itinerary
                   </Typography>
                   <ul style={{ fontWeight: 300, fontSize: 15, fontFamily: 'Arial' }}>
-                 <li> <BsDot style={{width: '20px', height: '20px'}}/> Checks when attractions are open</li>
-                    <li> <BsDot style={{width: '20px', height: '20px'}}/> Recommends how much time to spend</li>
-                    <li> <BsDot style={{width: '20px', height: '20px'}}/> Fully customizable</li>
+                 <li> -  Checks when attractions are open</li>
+                    <li> -  Recommends how much time to spend</li>
+                    <li> -  Fully customizable</li>
                   </ul>
                   <br/>
                     <Button
@@ -66,7 +66,7 @@ const Benefits = () => {
                         alignItems="left"
                         width='9'
                     
-                    >Start planning 
+                    >Love It! Let's Start 
                     </Button>
                 </td>
                 <td className={classes.contentImg}>
@@ -92,9 +92,9 @@ const Benefits = () => {
                     Matches your travel preferences
                   </Typography>
                   <ul style={{ fontWeight: 300, fontSize: 15, fontFamily: 'Arial' }}>
-                    <li>- Over 800 million data points</li>
-                    <li>- Best places &amp; time to visit</li>
-                    <li>- Transportation options</li>
+                    <li>-  Over 800 million data points</li>
+                    <li>-  Best places &amp; time to visit</li>
+                    <li>-  Transportation options</li>
                   </ul>
                   <br/>
                     <Button
@@ -104,7 +104,7 @@ const Benefits = () => {
                         alignItems="left"
                         width='9'
                     
-                    >Start planning 
+                    >Can't Wait! Start Now 
                     </Button>
                 </td>
               </tr>
@@ -117,9 +117,9 @@ const Benefits = () => {
                   Say hi to your new travel hub!
                   </Typography>
                   <ul style={{ fontWeight: 300, fontSize: 15, fontFamily: 'Arial' }}>
-                    <li>- Checks when attractions are open</li>
-                    <li>- Recommends how much time to spend</li>
-                    <li>- Fully customizable</li>
+                    <li>-  Checks when attractions are open</li>
+                    <li>-  Recommends how much time to spend</li>
+                    <li>-  Fully customizable</li>
                   </ul>
                   <br/>
                     <Button
@@ -129,7 +129,7 @@ const Benefits = () => {
                         alignItems="left"
                         width='9'
                     
-                    >Start planning 
+                    >Let's Go 
                     </Button>
                 </td>
                 <td className={classes.contentImg}>

@@ -8,15 +8,16 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import MaterialLink from '@material-ui/core/Link';
-import { Link } from 'react-router-dom';
-import Typewriter from "typewriter-effect";
-import Slide from '@material-ui/core/Slide';
+// import MaterialLink from '@material-ui/core/Link';
+// import { Link } from 'react-router-dom';
+// import Typewriter from "typewriter-effect";
+// import Slide from '@material-ui/core/Slide';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Footer from './Footer';
 import Carousel from './Carousel';
 import Benefits from './Benefits';
 import Features from './Features';
+
 // import Carousel from 'react-material-ui-carousel';
 // import { Carousel }  from 'react-responsive-carousel';
 // import 'react-responsive-carousel/lib/styles/carousel.min.css';
@@ -38,21 +39,7 @@ const useStyles = makeStyles((theme) => ({
   heroButtons: {
     marginTop: theme.spacing(4),
   },
-  // cardGrid: {
-  //   paddingTop: theme.spacing(8),
-  //   paddingBottom: theme.spacing(8),
-  // },
-  // card: {
-  //   height: '100%',
-  //   display: 'flex',
-  //   flexDirection: 'column',
-  // },
-  // cardMedia: {
-  //   paddingTop: '56.25%', // 16:9
-  // },
-  // cardContent: {
-  //   flexGrow: 1,
-  // },
+  
   button: {
     borderRadius: '30px',
     padding: '10px 20px',
@@ -95,6 +82,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: theme.palette.background.paper,
     padding: theme.spacing(6),
   },
+  
 }));
 
 // const cards = [1, 2, 3, 4, 5, 6, 7, 8];
@@ -134,6 +122,7 @@ export default function Landing() {
   const classes = useStyles();
 
   return (
+    
     <React.Fragment>
       <Carousel/>
 
@@ -202,23 +191,6 @@ export default function Landing() {
 <Benefits/>
 
 <Footer/>
-      
-      {/* Footer */}
-      {/* <footer className={classes.footer}>
-        {/* <Typography variant="h6" align="center" gutterBottom>
-          Footer
-        </Typography> */}
-        {/* <Typography
-          variant="subtitle1"
-          align="center"
-          color="textSecondary"
-          component="p"
-        >
-          Something here to give the footer a purpose!
-        </Typography>
-        <Copyright />
-      </footer>  */}
-      {/* End footer */}
 
     </React.Fragment>
   );

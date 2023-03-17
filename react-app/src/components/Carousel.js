@@ -289,16 +289,22 @@ export default function Carousel() {
             paragraph
           >
             <Typewriter
-              options={{
-                strings: [
-                  "\nLook no further than TripBuilderAI, a customized travel itinerary generator so that you can focus on enjoying your journey.",
-                ],
-                autoStart: true,
-                delay: 25,
-                pauseFor: 999999999,
-              }}
+            onInit={(typewriter) => {
+            typewriter.typeString('Discover Amazing Things')
+            .pauseFor(300)
+            .deleteAll()
+            .typeString('Travel With TripBuilder AI')
+            .pauseFor(300)
+            .deleteAll()
+            .typeString('Smooth Trip Planning')
+            .pauseFor(300)
+            .start();
+            }}
+            options={{
+            loop: true,
+            }}
             />
-          </Typography>
+            </Typography>
           <div
             className={classes.heroButtons}
             style={{

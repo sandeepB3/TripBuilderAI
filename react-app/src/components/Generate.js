@@ -4,6 +4,7 @@ import axios from 'axios';
 import { AuthContext } from '../contexts/AuthContext';
 import '../styles/Itinerary.css';
 import { useNavigate } from 'react-router-dom';
+import Output from './Output';
 
 let optimalHotel = {};
 let attractions = {};
@@ -193,7 +194,7 @@ function Generate() {
         </>
       ) : (
         <form className="travel-form" onSubmit={handleSubmit}>
-          <h2>{auth.state.isLoggedIn ? "LoggedIn" : "Who are you"}</h2>
+          {/* <h2>{auth.state.isLoggedIn ? "LoggedIn" : "Who are you"}</h2> */}
           <h2 style={{ textAlign: "center" }}>Plan Your Adventure</h2>
           <label>
             Destination:
