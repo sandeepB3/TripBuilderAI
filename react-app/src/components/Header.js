@@ -1,4 +1,4 @@
-import React from 'react';
+import React,{useContext} from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
@@ -7,7 +7,8 @@ import { Link as RouterLink } from 'react-router-dom';
 import { TbAffiliateFilled } from "react-icons/tb";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
-import travel from '../assets/travel.png'
+import travel from '../assets/travel.png'import { AuthContext } from '../contexts/AuthContext';
+import axios from 'axios';
 const useStyles = makeStyles((theme) => ({
   '@global': {
     ul: {
@@ -61,13 +62,16 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Header({ isSignedIn, onSignOut }) {
   const classes = useStyles();
-
+  const auth=useContext(AuthContext)
   const onClick = () => {
     if (isSignedIn && onSignOut) {
       onSignOut();
     }
   };
-
+  const onLogout=async()=>{
+    auth.setState(false);
+    const response = await axios.get('http://localhost:4000/login')
+  }
   return (
     <React.Fragment>
       <AppBar
@@ -92,6 +96,18 @@ export default function Header({ isSignedIn, onSignOut }) {
 
             
           {/* </Typography> */}
+          {auth.state.isLoggedIn? 
+          <Button
+            color="primary"
+            variant="outlined"
+            className={classes.link}
+            component={RouterLink}
+            to={isSignedIn ? '/' : '/auth/signin'}
+            onClick={onLogout}
+          > 
+            Logout
+          </Button> : 
+          
           <Button
             color="primary"
             variant="outlined"
@@ -100,8 +116,10 @@ export default function Header({ isSignedIn, onSignOut }) {
             to={isSignedIn ? '/' : '/auth/signin'}
             onClick={onClick}
           >
-            {isSignedIn ? 'Logout' : 'Login'}
-          </Button>
+           Login
+          </Button> }
+         
+         
         </Toolbar>
       </AppBar>
     </React.Fragment>
