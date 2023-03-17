@@ -2,10 +2,12 @@ import React from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Button from '@material-ui/core/Button';
 import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link as RouterLink } from 'react-router-dom';
-
+import { TbAffiliateFilled } from "react-icons/tb";
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
+import travel from '../assets/travel.png'
 const useStyles = makeStyles((theme) => ({
   '@global': {
     ul: {
@@ -52,6 +54,9 @@ const useStyles = makeStyles((theme) => ({
       paddingBottom: theme.spacing(6),
     },
   },
+  h3: {
+    alignContent: 'center',
+  }
 }));
 
 export default function Header({ isSignedIn, onSignOut }) {
@@ -72,15 +77,21 @@ export default function Header({ isSignedIn, onSignOut }) {
         className={classes.appBar}
       >
         <Toolbar className={classes.toolbar}>
-          <Typography
+        <div>
+        <TbAffiliateFilled style={{width: '50px', height: '50px'}}/>
+        {/* <img src={travel} position='static' alignItems='left' width={20px}/> */}
+        </div>
+          {/* <Typography
             variant="h6"
             color="inherit"
             noWrap
             component={RouterLink}
             to="/"
-          >
-            App
-          </Typography>
+          > */}
+            {/* <FontAwesomeIcon icon={solid('user-secret')} /> */}
+
+            
+          {/* </Typography> */}
           <Button
             color="primary"
             variant="outlined"
