@@ -7,7 +7,7 @@ import { Link as RouterLink } from 'react-router-dom';
 import { TbAffiliateFilled } from "react-icons/tb";
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
-import travel from '../assets/travel.png'import { AuthContext } from '../contexts/AuthContext';
+import { AuthContext } from '../contexts/AuthContext';
 import axios from 'axios';
 const useStyles = makeStyles((theme) => ({
   '@global': {

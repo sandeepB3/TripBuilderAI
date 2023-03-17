@@ -238,7 +238,7 @@ export default function Carousel(){
     autoplay: true,  // enable autoplay
     autoplaySpeed: 2000,  // set autoplay speed to 2 seconds
   };
-  const images = [    'https://altours-html.astemplatedesigns.com/assets/images/Home/Home-1.png',     'https://altours-html.astemplatedesigns.com/assets/images/Home/Home-2.png',     'https://altours-html.astemplatedesigns.com/assets/images/Home/Home-3.png'  ];
+  const images = ['https://altours-html.astemplatedesigns.com/assets/images/Home/Home-1.png',     'https://altours-html.astemplatedesigns.com/assets/images/Home/Home-2.png',     'https://altours-html.astemplatedesigns.com/assets/images/Home/Home-3.png'  ];
   const styles = {
     slideImage: {
       width: 1600,
@@ -278,8 +278,7 @@ export default function Carousel(){
           <Typewriter
           options={{
             strings: [
-                "\nLook no further than TripBuilderAI, the travel itinerary generator that does the hard work for you.",
-                "\nCreate a customized itinerary that matches your preferences and budget, so you can focus on enjoying your journey.",
+                "\nLook no further than TripBuilderAI, a customized travel itinerary generator so that you can focus on enjoying your journey.",
               ],
           autoStart: true,
           delay: 25,
