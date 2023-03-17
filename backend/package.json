@@ -17,6 +17,7 @@
     "express-session": "^1.17.3",
     "mongoose": "^7.0.0",
     "nodemon": "^2.0.21",
+    "openai": "^3.2.1",
     "passport": "^0.6.0",
     "passport-local-mongoose": "^7.1.2",
     "uuid": "^9.0.0",

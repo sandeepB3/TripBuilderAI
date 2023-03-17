@@ -1,4 +1,4 @@
-import React,{ useState } from 'react';
+import React,{ useState,useContext } from 'react';
 import axios from 'axios';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -12,7 +12,7 @@ import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { Link, redirect } from 'react-router-dom';
-
+import { AuthContext } from '../contexts/AuthContext';
 function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
@@ -55,7 +55,7 @@ export default function SignIn({ onSignIn }) {
   const classes = useStyles();
   const [username,setUsername]=useState('')
   const [password,setPassword]=useState('')
-
+  const auth=useContext(AuthContext)
   const onLogin = async (e)=>{
     e.preventDefault()
 
@@ -66,6 +66,9 @@ export default function SignIn({ onSignIn }) {
       })
       setUsername('')
       setPassword('')
+      auth.setState({
+        isLoggedIn:true
+      })
 
       if(response === "logged in"){
         redirect('/');
