@@ -10,6 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import MaterialLink from '@material-ui/core/Link';
 import { Link } from 'react-router-dom';
+import Typewriter from "typewriter-effect";
 
 function Copyright() {
   return (
@@ -77,20 +78,39 @@ export default function Album() {
               variant="h2"
               align="center"
               color="textPrimary"
+              style={{ fontWeight: 600 }}
               gutterBottom
             >
-              Home Page
+              TripBuilderAI
             </Typography>
             <Typography
+              variant="h4"
+              align="left"
+              color="primary"
+              style={{ fontWeight: 600 }}
+              paragraph
+            >
+              Looking for a hassle-free way to plan your next trips?
+            </Typography>
+
+            <Typography
               variant="h5"
-              align="center"
+              align="justify"
               color="textSecondary"
               paragraph
             >
-              Something short and leading about the collection below—its
-              contents, the creator, etc. Make it short and sweet, but not too
-              short so folks don&apos;t simply skip over it entirely.
+            <Typewriter
+              options={{
+                strings: ["\nLook no further than TripBuilderAI, the travel itinerary generator that does the hard work for you. Create a customized itinerary that matches your preferences and budget, so you can focus on enjoying your journey."],
+                // strings: [""],
+                autoStart: true,
+                delay: 25,
+                pauseFor: 999999999,
+                // onComplete: typewriter.cursor.remove(),
+              }}
+            />
             </Typography>
+
             <div className={classes.heroButtons}>
               <Grid container spacing={2} justifyContent="center">
                 <Grid item>
