@@ -36,7 +36,7 @@
 //     top: "50%",
 //     left: "50%",
 //     transform: "translate(-50%, -50%)",
-//     width: "100%",  
+//     width: "100%",
 //   },
 //   heroButtons: {
 //     marginTop: theme.spacing(4),
@@ -78,8 +78,8 @@
 //     autoplaySpeed: 2000,  // set autoplay speed to 2 seconds
 //   };
 // const images = [
-//   'https://altours-html.astemplatedesigns.com/assets/images/Home/Home-1.png', 
-//   'https://altours-html.astemplatedesigns.com/assets/images/Home/Home-2.png', 
+//   'https://altours-html.astemplatedesigns.com/assets/images/Home/Home-1.png',
+//   'https://altours-html.astemplatedesigns.com/assets/images/Home/Home-2.png',
 //   'https://altours-html.astemplatedesigns.com/assets/images/Home/Home-3.png'
 // ];
 // const styles = {
@@ -106,7 +106,7 @@
 //         alt="background"
 //         className={classes.background}
 //     />
-   
+
 //     <div>
 //     <div className={classes.heroContent}>
 //     <Typography
@@ -146,7 +146,6 @@
 // );
 // }
 
-
 import React from "react";
 import {
   makeStyles,
@@ -156,8 +155,9 @@ import {
   Grid,
   Button,
 } from "@material-ui/core";
+import { Link } from "react-router-dom";
 import Typewriter from "typewriter-effect";
-import Slider from 'react-slick';
+import Slider from "react-slick";
 // import { makeStyles } from '@material-ui/core/styles';
 import { Card, CardMedia } from '@material-ui/core';
 import 'slick-carousel/slick/slick.css';
@@ -168,7 +168,7 @@ import { Link } from 'react-router-dom';
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "102vh",
-    width: '218vh',
+    width: "218vh",
     position: "relative",
   },
   background: {
@@ -179,14 +179,14 @@ const useStyles = makeStyles((theme) => ({
     height: "100%",
     zIndex: -1,
     opacity: 20,
-    maxWidth: "100%",  // add this line
+    maxWidth: "100%", // add this line
   },
   heroContent: {
     position: "absolute",
     top: "50%",
     left: "50%",
     transform: "translate(-50%, -50%)",
-    width: "100%",  
+    width: "100%",
   },
   heroButtons: {
     marginTop: theme.spacing(4),
@@ -208,7 +208,7 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(6),
   },
   slickSlide: {
-    opacity: 0.3
+    opacity: 0.3,
   },
   container: {
     position: "absolute",
@@ -227,7 +227,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Carousel(){
+export default function Carousel() {
   const classes = useStyles();
 
   const settings = {
@@ -236,16 +236,20 @@ export default function Carousel(){
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    autoplay: true,  // enable autoplay
-    autoplaySpeed: 2000,  // set autoplay speed to 2 seconds
+    autoplay: true, // enable autoplay
+    autoplaySpeed: 2000, // set autoplay speed to 2 seconds
   };
-  const images = ['https://altours-html.astemplatedesigns.com/assets/images/Home/Home-1.png',     'https://altours-html.astemplatedesigns.com/assets/images/Home/Home-2.png',     'https://altours-html.astemplatedesigns.com/assets/images/Home/Home-3.png'  ];
+  const images = [
+    "https://altours-html.astemplatedesigns.com/assets/images/Home/Home-1.png",
+    "https://altours-html.astemplatedesigns.com/assets/images/Home/Home-2.png",
+    "https://altours-html.astemplatedesigns.com/assets/images/Home/Home-3.png",
+  ];
   const styles = {
     slideImage: {
       width: 1600,
-      height: 630
-    }
-  }
+      height: 630,
+    },
+  };
   return (
     <div className={classes.root}>
       <img
@@ -260,47 +264,63 @@ export default function Carousel(){
           align="left"
           color="inherit"
           style={{ fontWeight: 600, position: "absolute", top: 50, left: 50 }}
-          >
+        >
           TripBuilderAI
-          </Typography>
-          <div className={classes.heroContent}>
+        </Typography>
+        <div className={classes.heroContent}>
           <Typography
-          variant="h4"
-          align="left"
-          color="primary"
-          style={{ fontWeight: 600 ,position: "relative", top: 0, left: 50}}
-          paragraph
+            variant="h4"
+            align="left"
+            color="primary"
+            style={{ fontWeight: 600, position: "relative", top: 0, left: 50 }}
+            paragraph
           >
-          Looking for a hassle-free way to plan your next trips?
+            Looking for a hassle-free way to plan your next trips?
           </Typography>
-          <Typography variant="h5" align="left" color="inherit"
-          style={{ fontWeight: 200 ,position: "relative", right:50, left: 50}}
-          paragraph >
-          <Typewriter
-          options={{
-            strings: [
-                "\nLook no further than TripBuilderAI, a customized travel itinerary generator so that you can focus on enjoying your journey.",
-              ],
-          autoStart: true,
-          delay: 25,
-          pauseFor: 999999999,
-          }}
-          />
+          <Typography
+            variant="h5"
+            align="left"
+            color="inherit"
+            style={{
+              fontWeight: 200,
+              position: "relative",
+              right: 50,
+              left: 50,
+            }}
+            paragraph
+          >
+            <Typewriter
+              options={{
+                strings: [
+                  "\nLook no further than TripBuilderAI, a customized travel itinerary generator so that you can focus on enjoying your journey.",
+                ],
+                autoStart: true,
+                delay: 25,
+                pauseFor: 999999999,
+              }}
+            />
           </Typography>
-          <div className={classes.heroButtons}
-          style={{ fontWeight: 200 ,position: "relative", right:50, left: 50}}>
-              <Grid container spacing={2} justifyContent="left">
-                <Grid item>
-                  <Link to="/itinerary">
-                    <Button variant="contained" color="primary">
-                      Generate Itinerary
-                    </Button>
-                  </Link>
-                </Grid>
+          <div
+            className={classes.heroButtons}
+            style={{
+              fontWeight: 200,
+              position: "relative",
+              right: 50,
+              left: 50,
+            }}
+          >
+            <Grid container spacing={2} justifyContent="left">
+              <Grid item>
+                <Link to="/itinerary">
+                  <Button variant="contained" color="primary">
+                    Generate Itinerary
+                  </Button>
+                </Link>
               </Grid>
-            </div>
-         </div>
+            </Grid>
           </div>
-          </div>
-          );
-          }
+        </div>
+      </div>
+    </div>
+  );
+}
