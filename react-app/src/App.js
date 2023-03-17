@@ -28,6 +28,7 @@ function App() {
                         <Routes>
                             <Route path="/auth/signin" element={<Signin isSignedIn/>} />
                             <Route path="/auth/signup" element={<Signup isSignedIn />} />
+                            
                             <Route path="/itinerary" element={<Generate />} />
                             <Route path="/" element={<Landing />} />
                             
