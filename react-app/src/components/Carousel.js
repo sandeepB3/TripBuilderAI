@@ -224,6 +224,10 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(3),
     boxSizing: "border-box",
   },
+  roundedButton: {
+    borderRadius: '10px', // Adjust the value as per your preference
+  },
+
 }));
 
 export default function Carousel() {
@@ -249,6 +253,7 @@ export default function Carousel() {
       height: 630,
     },
   };
+
   return (
     <div className={classes.root}>
       <img
@@ -314,15 +319,19 @@ export default function Carousel() {
               left: 50,
             }}
           >
-            <Grid container spacing={2} justifyContent="left">
-              <Grid item>
-                <Link to="/itinerary">
-                  <Button variant="contained" color="primary">
-                    Generate Itinerary
-                  </Button>
-                </Link>
-              </Grid>
-            </Grid>
+          <Grid container spacing={2} justifyContent="left">
+          <Grid item>
+            <Link to="/itinerary">
+              <Button
+                variant="contained"
+                color="primary"
+                className={classes.roundedButton}
+              >
+                Generate Itinerary
+              </Button>
+            </Link>
+          </Grid>
+        </Grid>
           </div>
         </div>
       </div>
