@@ -16,19 +16,18 @@ const generateClassName = createGenerateClassName({
 })
 
 function App() {
-    const [isSignedIn, setIsSignedIn] = useState(false);
     const auth=useContext(AuthContext)
+    const isLoggedIn=true
     return (
         <AuthState>
         <BrowserRouter>
             <StylesProvider generateClassName={generateClassName}>
                 <div>
-                    <Header onSignOut={() => setIsSignedIn(false)} isSignedIn={isSignedIn} />
+                    <Header/>
                     <Suspense fallback={<Progress />}>
                         <Routes>
-                            <Route path="/auth/signin" element={<Signin isSignedIn/>} />
-                            <Route path="/auth/signup" element={<Signup isSignedIn />} />
-                            
+                            <Route path="/auth/signin" element={<Signin />}/>
+                            <Route path="/auth/signup" element={<Signup/>} />
                             <Route path="/itinerary" element={<Generate />} />
                             <Route path="/" element={<Landing />} />
                             

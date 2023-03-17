@@ -1,28 +1,37 @@
-import React, { useState, useContext } from "react";
-import "../styles/TravelForm.css";
-import axios from "axios";
-import { AuthContext } from "../contexts/AuthContext";
-import "../styles/Itinerary.css";
-import Output from "./Output";
+import React, { useState,useContext,useEffect } from 'react';
+import '../styles/TravelForm.css';
+import axios from 'axios';
+import { AuthContext } from '../contexts/AuthContext';
+import '../styles/Itinerary.css';
+import { useNavigate } from 'react-router-dom';
 
 let optimalHotel = {};
 let attractions = {};
 let gptResponse = {};
 
-const key = "1274c82b6amshb81c50e57d65f2ap184a24jsn198e9c0e8e6b";
+const key = '6820aab538msh2d1adb7f042b0a4p183161jsn4c392e858a6c'
 
 function Generate() {
-  const [destination, setDestination] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [budget, setBudget] = useState("");
-  const [apiOutput, setApiOutput] = useState("");
+  const auth = useContext(AuthContext)
+  const navigate = useNavigate()
+  useEffect(() => {
+    // Update the document title using the browser API
+    if(!auth.state.isLoggedIn){
+      navigate("/auth/signin")
+    }
+  },[]);
+
+  const [destination, setDestination] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [budget, setBudget] = useState('');
+  const [apiOutput, setApiOutput] = useState('')
   const [showOutput, setShowOutput] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
 
-  const travelBudget = 0.15 * budget;
-  const stayBudget = 0.4 * budget;
-  const auth = useContext(AuthContext);
+  const travelBudget = 0.15*budget;
+  const stayBudget = 0.4*budget;
+ 
 
   const gptPrompt = async () => {
     try {

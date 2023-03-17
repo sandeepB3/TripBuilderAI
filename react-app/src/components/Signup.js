@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React,{useState,useContext} from 'react';
 import axios from 'axios';
 import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
@@ -11,7 +11,8 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthContext';
 
 function Copyright() {
   return (
@@ -49,18 +50,28 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function SignUp({ onSignIn }) {
+  const navigate = useNavigate();
   const classes = useStyles();
   const [username,setUsername]=useState('')
   const [password,setPassword]=useState('')
-
+  const auth=useContext(AuthContext)
   const onRegister = async (e)=>{
     e.preventDefault()
-    await axios.post('http://localhost:4000/register',{
+    const response = await axios.post('http://localhost:4000/register',{
         username,
         password
     })
     setUsername('')
     setPassword('')
+    auth.setState({
+      isLoggedIn:true
+    })
+    console.log(response)
+    if (response.status === 201) {
+      navigate('/');
+    } else {
+      console.log(response);
+    }
   }
   
   return (

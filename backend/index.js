@@ -12,7 +12,7 @@ const gpt3API = require('openai')
 // import { Configuration, OpenAIApi } from 'openai';
 
 const configuration = new gpt3API.Configuration({
-    apiKey: "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"
+    apiKey: "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"
 });
 
 const openai = new gpt3API.OpenAIApi(configuration);
@@ -61,19 +61,28 @@ app.get('/register',(req,res)=>{
     res.send(users);
 })
 app.post('/register',async(req,res)=>{
-    const id = uuidv4();
+    try{
     const {username,password} = req.body
     
-    const user=new User({username})
+    const user = new User({username})
     // console.log(password)
     
-    const registeredUser = await User.register(user,password)
+    const registeredUser = await User.register(user, password)
     // user.save()
     // const user = new User({username});
     // await user.setPassword(password);
     // await user.save();
+    req.login(registeredUser,err=>{
+        if (err){
+            console.log(err)
+        }
     console.log("registered")
-    res.status(201).send(users[id])
+    res.status(201).send(registeredUser)
+    })
+    }catch(e){
+        res.status(401).send(e)
+    }
+    
 })
 app.post('/login',passport.authenticate('local',{failureRedirect:'/login'}),async(req,res)=>{
    
