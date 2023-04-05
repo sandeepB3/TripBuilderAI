@@ -5,18 +5,54 @@ import { AuthContext } from '../contexts/AuthContext';
 import '../styles/Itinerary.css';
 import { useNavigate } from 'react-router-dom';
 import Output from './Output';
+<<<<<<< HEAD
+=======
+import PriceBreakupChart from './PriceBreakup';
+import { makeStyles } from '@material-ui/core/styles';
+import Typography from '@material-ui/core/Typography';
+import PointsList from './PointList';
+import { red } from '@material-ui/core/colors';
+>>>>>>> 7cb185a (new)
 
+//Storing output objects of api calls
 let optimalHotel = {};
 let attractions = {};
 let gptResponse = {};
 
-const key = '6820aab538msh2d1adb7f042b0a4p183161jsn4c392e858a6c'
+const useStyles = makeStyles((theme) => ({
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+    [theme.breakpoints.up('sm')]: {
+      flexDirection: 'row',
+      justifyContent: 'space-around',
+      alignItems: 'flex-start',
+    },
+  },
+  asterisk: {
+    color: red[500],
+    fontSize: '1.1.rem',
+    verticalAlign: 'super',
+    marginLeft: '0.2rem',
+  },
+}));
+
+//API Key
+const key = '45d4cf1702mshdf80baf491e74fdp1c2157jsnc79ef27ef117'
 
 function Generate() {
-  const auth = useContext(AuthContext)
+  const classes = useStyles();
+
+  //Sharing of authentication globally
+  const auth = useContext(AuthContext) 
+
+  //For redirection of Navigation
   const navigate = useNavigate()
+
+  //Runs before rendering []
   useEffect(() => {
-    // Update the document title using the browser API
+    //Update the document title using the browser API
     if(!auth.state.isLoggedIn){
       navigate("/auth/signin")
     }
@@ -25,14 +61,31 @@ function Generate() {
   const [destination, setDestination] = useState('');
   const [startDate, setStartDate] = useState('');
   const [endDate, setEndDate] = useState('');
-  const [budget, setBudget] = useState('');
+  const [budget, setBudget] = useState(0);
   const [apiOutput, setApiOutput] = useState('')
   const [showOutput, setShowOutput] = useState(false);
   const [isGenerating, setIsGenerating] = useState(false);
+  const [points, setPoints] = useState([]);
 
-  const travelBudget = 0.15*budget;
-  const stayBudget = 0.4*budget;
- 
+  let travelBudget = 0
+  const stayBudget = (0.4*budget)
+
+  // premium:15
+  // deluxe:12.5
+  // standard:10
+  if(budget>=80000)
+  {
+    travelBudget=0.2*budget;
+  }
+  else if(50000<=budget && budget<=70000){
+    travelBudget=0.175*budget; 
+  }
+  else
+  {
+    travelBudget=0.15*budget;
+  }
+
+  let miscellaneous = budget - (travelBudget + stayBudget)
 
   const gptPrompt = async () => {
     try {
@@ -48,6 +101,8 @@ function Generate() {
       console.log("OpenAI replied...", output.text);
       setShowOutput(true);
       setApiOutput(`${output.text}`);
+      setPoints(apiOutput.split("Day").slice(1).map(point => "Day" + point.trim()));
+    
       setIsGenerating(false);
       setDestination("");
       setStartDate("");
@@ -58,6 +113,7 @@ function Generate() {
     }
   };
 
+  //Skyscanner API
   const handleSubmit = async (e) => {
     e.preventDefault();
     setIsGenerating(true);
@@ -65,6 +121,9 @@ function Generate() {
     console.log("Start Date:", startDate);
     console.log("End Date:", endDate);
     console.log("Budget:", budget);
+
+    console.log(travelBudget);
+    console.log(stayBudget);
 
     const places = {
       method: "GET",
@@ -182,17 +241,45 @@ function Generate() {
     } catch (err) {
       console.log(err);
     }
+    
+
+    
+
+   
   };
 
   return (
+    
     <div>
       {showOutput ? (
         <>
-          <h3>Output</h3>
-          <Output/>
-          <p>{apiOutput}</p>
+        <div className='api-output'>
+          <Typography  
+            variant="h4"
+            align="center"
+            color="primary"
+            style={{ fontWeight: 400 }}
+          >
+            Itinerary
+          </Typography>
+          <br />
+          {/* <div className='api-output'>
+            <Typography  
+              variant="h6"
+              align="justify"
+              color="inherit"
+              style={{ fontWeight: 600 }}
+            >
+              {apiOutput}
+            </Typography> */}
+            <div>
+            <PointsList points={points}/>
+          </div>  
+        </div>
+    
         </>
       ) : (
+<<<<<<< HEAD
         <form className="travel-form" onSubmit={handleSubmit}>
           {/* <h2>{auth.state.isLoggedIn ? "LoggedIn" : "Who are you"}</h2> */}
           <h2 style={{ textAlign: "center" }}>Plan Your Adventure</h2>
@@ -242,8 +329,98 @@ function Generate() {
                 )}
               </div>
             </button>
+=======
+        
+        <div className={classes.container}>
+          <div className='right'>
+          <br></br>
+          <form className="travel-form" onSubmit={handleSubmit}>
+            <h2 style={{ textAlign: "center" }}>Plan Your Adventure</h2>
+            <label>
+              Destination<Typography className={classes.asterisk} component="span">* </Typography>:
+              <input
+                type="text"
+                value={destination}
+                onChange={(event) => setDestination(event.target.value)}
+              />
+
+            </label>
+            <br />
+            <label>
+              Start Date<Typography className={classes.asterisk} component="span">* </Typography>:
+              <input
+                type="date"
+                value={startDate}
+                onChange={(event) => setStartDate(event.target.value)}
+              />
+            </label>
+            <br />
+            <label>
+              End Date<Typography className={classes.asterisk} component="span">* </Typography>:
+              <input
+                type="date"
+                value={endDate}
+                min={startDate}
+                onChange={(event) => setEndDate(event.target.value)}
+              />
+            </label>
+            <br />
+            <label>
+              Budget<Typography className={classes.asterisk} component="span">* </Typography>:
+              <input
+                type="number"
+                value={budget}
+                onChange={(event) => setBudget(event.target.value)}
+              />
+            </label>
+            <br />
+            <div className="prompt-buttons">
+              <button type="submit">
+                <div className="generate">
+                  {isGenerating ? (
+                    <span className="loader"></span>
+                  ) : (
+                    <p>Plan My Trip</p>
+                  )}
+                </div>
+              </button>
+            </div>
+          </form>
+        </div>
+          
+          <PriceBreakupChart miscellaneous={miscellaneous} travelBudget={travelBudget} stayBudget={stayBudget} totalBudget={budget}/>
+          <div>
+          <br></br>
+        <div style={{ 
+          backgroundColor: '#283049', 
+          color: '#fff', 
+          padding: '20px',
+          // borderRadius: '10px',
+          display: 'flex',
+          alignItems: 'center',
+          flexDirection: 'column',
+          maxHeight: '600px'
+        }}>
+          <div style={{ textAlign: 'center' }}>
+            <p style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '10px' }}>Total Budget:</p>
+            <p style={{ fontSize: '24px', fontWeight: 'bold' }}>{budget}</p>
+>>>>>>> 7cb185a (new)
           </div>
-        </form>
+          <div style={{ textAlign: 'center' }}>
+            <p style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '10px' }}>Budget allocated for travel:</p>
+            <p style={{ fontSize: '24px', fontWeight: 'bold' }}>{travelBudget}</p>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <p style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '10px' }}>Budget allocated for stay:</p>
+            <p style={{ fontSize: '24px', fontWeight: 'bold' }}>{stayBudget}</p>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <p style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '10px' }}>Food and Attractions:</p>
+            <p style={{ fontSize: '24px', fontWeight: 'bold' }}>{miscellaneous}</p>
+          </div>
+        </div> 
+      </div>
+        </div>
       )}
     </div>
   );

@@ -3,7 +3,6 @@ import { makeStyles } from "@material-ui/core/styles";
 import { Button, Grid, Typography } from "@material-ui/core";
 import { BsDot } from "react-icons/bs";
 
-
 const useStyles = makeStyles((theme) => ({
   travelHub: {
     margin: theme.spacing(4, 0),
@@ -54,9 +53,15 @@ const Benefits = () => {
                     Optimizes your itinerary
                   </Typography>
                   <ul style={{ fontWeight: 300, fontSize: 15, fontFamily: 'Arial' }}>
+<<<<<<< HEAD
                  <li> -  Checks when attractions are open</li>
                     <li> -  Recommends how much time to spend</li>
                     <li> -  Fully customizable</li>
+=======
+                 <li> <BsDot style={{width: '15px', height: '15px'}}/> Checks when attractions are open</li>
+                    <li> <BsDot style={{width: '15px', height: '15px'}}/> Recommends how much time to spend</li>
+                    <li> <BsDot style={{width: '15px', height: '15px'}}/> Fully customizable</li>
+>>>>>>> 7cb185a (new)
                   </ul>
                   <br/>
                     <Button
@@ -66,7 +71,11 @@ const Benefits = () => {
                         alignItems="left"
                         width='9'
                     
+<<<<<<< HEAD
                     >Love It! Let's Start 
+=======
+                    >Can't Wait! Let's Go 
+>>>>>>> 7cb185a (new)
                     </Button>
                 </td>
                 <td className={classes.contentImg}>
@@ -92,9 +101,15 @@ const Benefits = () => {
                     Matches your travel preferences
                   </Typography>
                   <ul style={{ fontWeight: 300, fontSize: 15, fontFamily: 'Arial' }}>
+<<<<<<< HEAD
                     <li>-  Over 800 million data points</li>
                     <li>-  Best places &amp; time to visit</li>
                     <li>-  Transportation options</li>
+=======
+                    <li> <BsDot style={{ width: "15px", height: "15px" }} /> Over 800 million data points</li>
+                    <li> <BsDot style={{ width: "15px", height: "15px" }} /> Best places &amp; time to visit</li>
+                    <li> <BsDot style={{ width: "15px", height: "15px" }} /> Transportation options</li>
+>>>>>>> 7cb185a (new)
                   </ul>
                   <br/>
                     <Button
@@ -104,7 +119,11 @@ const Benefits = () => {
                         alignItems="left"
                         width='9'
                     
+<<<<<<< HEAD
                     >Can't Wait! Start Now 
+=======
+                    >Let's Go!
+>>>>>>> 7cb185a (new)
                     </Button>
                 </td>
               </tr>
@@ -117,9 +136,15 @@ const Benefits = () => {
                   Say hi to your new travel hub!
                   </Typography>
                   <ul style={{ fontWeight: 300, fontSize: 15, fontFamily: 'Arial' }}>
+<<<<<<< HEAD
                     <li>-  Checks when attractions are open</li>
                     <li>-  Recommends how much time to spend</li>
                     <li>-  Fully customizable</li>
+=======
+                    <li> <BsDot style={{ width: "15px", height: "15px" }} /> Checks when attractions are open</li>
+                    <li> <BsDot style={{ width: "15px", height: "15px" }} /> Recommends how much time to spend</li>
+                    <li> <BsDot style={{ width: "15px", height: "15px" }} /> Fully customizable</li>
+>>>>>>> 7cb185a (new)
                   </ul>
                   <br/>
                     <Button
@@ -129,7 +154,11 @@ const Benefits = () => {
                         alignItems="left"
                         width='9'
                     
+<<<<<<< HEAD
                     >Let's Go 
+=======
+                    >Perfect! Start Planning 
+>>>>>>> 7cb185a (new)
                     </Button>
                 </td>
                 <td className={classes.contentImg}>

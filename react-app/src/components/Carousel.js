@@ -319,6 +319,7 @@ export default function Carousel() {
               left: 50,
             }}
           >
+<<<<<<< HEAD
           <Grid container spacing={2} justifyContent="left">
           <Grid item>
             <Link to="/itinerary">
@@ -332,6 +333,17 @@ export default function Carousel() {
             </Link>
           </Grid>
         </Grid>
+=======
+            <Grid container spacing={2} justifyContent="left">
+              <Grid item>
+                <Link to="/itinerary">
+                  <Button variant="contained" color="primary" className={classes.roundedButton}>
+                    Generate Itinerary
+                  </Button>
+                </Link>
+              </Grid>
+            </Grid>
+>>>>>>> 7cb185a (new)
           </div>
         </div>
       </div>

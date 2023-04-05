@@ -12,7 +12,7 @@ const gpt3API = require('openai')
 // import { Configuration, OpenAIApi } from 'openai';
 
 const configuration = new gpt3API.Configuration({
-    apiKey: "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"
+    apiKey: "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"
 });
 
 const openai = new gpt3API.OpenAIApi(configuration);
@@ -117,8 +117,8 @@ app.post('/gptPrompt',async(req,res)=>{
     const baseCompletion = await openai.createCompletion({
         model: 'text-davinci-003',
         prompt: `${basePromptPrefix}${userLocation} ${req.body.destination}\n${startDate} ${req.body.startDate}\n${endDate} ${req.body.endDate}\n${hotel} ${req.body.hotel}\n${budget} ${req.body.budget}\n${attractions} ${req.body.attractions.join(', ')}\n${basePromptPostfix}\n`,
-        temperature: 0.9,
-        max_tokens: 2000,
+        temperature: 0.7,
+        max_tokens: 2500,
     });
 
     const basePromptOutput = baseCompletion.data.choices.pop();
