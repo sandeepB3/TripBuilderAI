@@ -95,6 +95,7 @@ Start both client and the server - Both run independently on different ports
 <img width="1440" alt="Screenshot 2023-05-31 at 10 18 49 AM" src="https://github.com/sandeepB3/TripBuilderAI/assets/107111616/3d8096e8-f0c2-471e-bebd-0765e050dfb9">
 <img width="1440" alt="Screenshot 2023-05-31 at 10 26 56 AM" src="https://github.com/sandeepB3/TripBuilderAI/assets/107111616/e0ff8e41-c153-4bbf-bdad-ed14e25aa0c1">
 <img width="1440" alt="Screenshot 2023-05-31 at 2 33 09 PM" src="https://github.com/sandeepB3/TripBuilderAI/assets/107111616/79ad0d07-fc4f-409f-8bbb-b2d48d20868c">
+
 **The Itinerary Page has not been styled yet - Contributions are welcomed**
 
 ## Future Scope
