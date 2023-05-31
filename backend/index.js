@@ -12,7 +12,7 @@ const gpt3API = require('openai')
 // import { Configuration, OpenAIApi } from 'openai';
 
 const configuration = new gpt3API.Configuration({
-    apiKey: "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"
+    apiKey: process.env.OPENAI_API_KEY
 });
 
 const openai = new gpt3API.OpenAIApi(configuration);
@@ -68,10 +68,6 @@ app.post('/register',async(req,res)=>{
     // console.log(password)
     
     const registeredUser = await User.register(user, password)
-    // user.save()
-    // const user = new User({username});
-    // await user.setPassword(password);
-    // await user.save();
     req.login(registeredUser,err=>{
         if (err){
             console.log(err)
@@ -85,17 +81,7 @@ app.post('/register',async(req,res)=>{
     
 })
 app.post('/login',passport.authenticate('local',{failureRedirect:'/login'}),async(req,res)=>{
-   
-    // const {username,password}=req.body
-    
-    // const user=new User({username})
-    // // console.log(password)
-    
-    // const registeredUser=await User.register(user,password)
-    // // user.save()
-    // // const user = new User({username});
-    // // await user.setPassword(password);
-    // // await user.save();
+
     console.log("logged in")
     res.status(201).send("logged in")
 })
@@ -108,18 +94,22 @@ const endDate = "End Date: "
 const hotel = "Hotel Name: "
 const attractions = "List of Attractions: ";
 const budget = "User Budget: "
-const basePromptPostfix = "\nGenerate a detailed itinerary from the Attractions to visit array that optimally fits for the duration of start and end date. Choose only maximum of 2 to 3 attractions to visit per day. Optimise user's time to make the most of the trip. Also mention some places to eat along the way.\n\nItinerary: "
+const basePromptPostfix = "\nGenerate a detailed itinerary from the Attractions to visit array that optimally fits for the duration of start and end date. Choose only maximum of 2 to 3 attractions to visit per day. Optimise user's time to make the most of the trip. Also mention some places to eat along the way.\n\nItinerary: \n\nDay 1:\nDay 2:\n ....."
 
 app.post('/gptPrompt',async(req,res)=>{
     //GPT3 API Call
+    let baseCompletion = '';
     console.log(`\nAPI: ${basePromptPrefix}${userLocation} ${req.body.destination}\n${startDate} ${req.body.startDate}\n${endDate} ${req.body.endDate}\n${hotel} ${req.body.hotel}\n${budget} ${req.body.budget}\n\n${attractions} ${req.body.attractions.join(', ')}\n${basePromptPostfix}\n`)
-
-    const baseCompletion = await openai.createCompletion({
-        model: 'text-davinci-003',
-        prompt: `${basePromptPrefix}${userLocation} ${req.body.destination}\n${startDate} ${req.body.startDate}\n${endDate} ${req.body.endDate}\n${hotel} ${req.body.hotel}\n${budget} ${req.body.budget}\n${attractions} ${req.body.attractions.join(', ')}\n${basePromptPostfix}\n`,
-        temperature: 0.9,
-        max_tokens: 2000,
-    });
+    try{
+        baseCompletion = await openai.createCompletion({
+            model: 'text-davinci-003',
+            prompt: `${basePromptPrefix}${userLocation} ${req.body.destination}\n${startDate} ${req.body.startDate}\n${endDate} ${req.body.endDate}\n${hotel} ${req.body.hotel}\n${budget} ${req.body.budget}\n${attractions} ${req.body.attractions.join(', ')}\n${basePromptPostfix}\n`,
+            temperature: 0.7,
+            max_tokens: 2500,
+        });    
+    }catch(err){
+        console.log(err)
+    }
 
     const basePromptOutput = baseCompletion.data.choices.pop();
     console.log(basePromptOutput);

@@ -8,19 +8,11 @@ import Grid from '@material-ui/core/Grid';
 import Typography from '@material-ui/core/Typography';
 import { makeStyles } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
-// import MaterialLink from '@material-ui/core/Link';
-// import { Link } from 'react-router-dom';
-// import Typewriter from "typewriter-effect";
-// import Slide from '@material-ui/core/Slide';
 import FavoriteIcon from '@material-ui/icons/Favorite';
 import Footer from './Footer';
 import Carousel from './Carousel';
 import Benefits from './Benefits';
 import Features from './Features';
-
-// import Carousel from 'react-material-ui-carousel';
-// import { Carousel }  from 'react-responsive-carousel';
-// import 'react-responsive-carousel/lib/styles/carousel.min.css';
 
 
 const useStyles = makeStyles((theme) => ({
@@ -85,11 +77,10 @@ const useStyles = makeStyles((theme) => ({
   
 }));
 
-// const cards = [1, 2, 3, 4, 5, 6, 7, 8];
 
 const cards = [
   {
-    title: 'A local\’s touristy guide to Singapore',
+    title: 'A local’s touristy guide to Singapore',
     image: 'https://itin-dev.sfo2.cdn.digitaloceanspaces.com/freeImageSmall/1kk2K6uh4y5jEKGD71mcs7lXgd7FEzkc',
     description:
       'Lived in Singapore my whole life! This guide is for those looking to tick off the list of tourist attractions in the sunny Republic.',
@@ -124,12 +115,10 @@ export default function Landing() {
   return (
     
     <React.Fragment>
-      <Carousel/>
-
+    <Carousel/>
       <Features/>
       <main>
    
-        {/* Grid Page: */}
         <React.Fragment>
        
       <Container className={classes.cardGrid} maxWidth="lg">

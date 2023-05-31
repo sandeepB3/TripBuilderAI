@@ -7,6 +7,7 @@ import {
   Typography
 } from '@material-ui/core';
 import ExpandMoreIcon from '@material-ui/icons/ExpandMore';
+import PriceBreakupChart from './PriceBreakup';
 
 const useStyles = makeStyles((theme) => ({
   accordion: {
@@ -37,28 +38,64 @@ const parseActivities = (output) => {
   });
 };
 
-const Output = ({ apiOutput }) => {
+const Output = (props) => {
   const classes = useStyles();
-  const activities = parseActivities(apiOutput);
+  const activities = parseActivities(props.apiOutput);
 
   return (
     <>
-      {activities.map(({ day, activities }) => (
+    <Typography  
+      variant="h4"
+      align="center"
+      color="primary"
+      style={{ fontWeight: 600 }}
+    >
+    Itinerary
+    </Typography>
+
+    {activities.map(({ day, activities }) => (
         <Accordion key={day} className={classes.accordion}>
           <AccordionSummary expandIcon={<ExpandMoreIcon />}>
-            <Typography className={classes.day}>{day}</Typography>
+            <Typography className={classes.day}>Day {day}</Typography>
           </AccordionSummary>
           <AccordionDetails>
-            <ul>
               {activities.map((activity) => (
-                <li key={activity} className={classes.activity}>
-                  {activity}
-                </li>
+                <Typography key={activity} className={classes.activity} paragraph>
+                  {activity.replace(/\n/g, <br />)}
+                </Typography>
               ))}
-            </ul>
           </AccordionDetails>
         </Accordion>
       ))}
+      <PriceBreakupChart miscellaneous={props.budget-(props.travelBudget+props.stayBudget)} travelBudget={props.travelBudget} stayBudget={props.stayBudget} totalPrice={props.budget}/>
+      <div>
+        <div style={{ 
+          backgroundColor: '#283049', 
+          color: '#fff', 
+          padding: '20px',
+          // borderRadius: '10px',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'space-around'
+        }}>
+          <div style={{ textAlign: 'center' }}>
+            <p style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '10px' }}>Total Budget:</p>
+            <p style={{ fontSize: '24px', fontWeight: 'bold' }}>{props.budget}</p>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <p style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '10px' }}>Budget allocated for travel:</p>
+            <p style={{ fontSize: '24px', fontWeight: 'bold' }}>{props.travelBudget}</p>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <p style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '10px' }}>Budget allocated for stay:</p>
+            <p style={{ fontSize: '24px', fontWeight: 'bold' }}>{props.stayBudget}</p>
+          </div>
+          <div style={{ textAlign: 'center' }}>
+            <p style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '10px' }}>Food and Attractions:</p>
+            <p style={{ fontSize: '24px', fontWeight: 'bold' }}>{props.budget-(props.travelBudget+props.stayBudget)}</p>
+          </div>
+        </div> 
+      </div>
     </>
   );
 };

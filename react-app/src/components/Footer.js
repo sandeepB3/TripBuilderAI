@@ -28,7 +28,7 @@ export default function Footer() {
         <Grid container spacing={4}>
           <Grid item xs={12} sm={3}>
             <Typography variant="subtitle1">
-              Made with <FavoriteIcon className={classes.heartIcon} /> by Group 4 for JPMC
+              Made with <FavoriteIcon className={classes.heartIcon} /> by Group 4 for SPIT
             </Typography>
             <br/>
             <Typography variant="subtitle2">&copy; 2023 TripBuilderAI.</Typography>

@@ -317,6 +317,16 @@ textarea {
     color: rgba(255, 255, 255, 0.5);
 }
 
+.output-head {
+    text-align: center;
+    font-family: Verdana sans-serif;
+    font-size: medium;
+}
+
+.inner-grid {
+    margin: auto;
+}
+
 @media (min-width: 810px) and (max-width: 1199px) {
     .container {
         max-width: 600px;
@@ -405,5 +415,24 @@ textarea {
     }
 }
 
+.graphs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 80;
+}
 
+.inner-graphs{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+}
+
+.api-output{
+    margin-left: auto;
+    margin-right: auto;
+    justify-content: center;
+
+}
 /*Booking Form*/
