@@ -1,8 +1,6 @@
-import React, { Suspense, useContext } from 'react';
+import React, { Suspense } from 'react';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import { StylesProvider, createGenerateClassName } from '@material-ui/core/styles';
-import FlashMessage from 'react-flash-message'
-
 import Header from './components/Header';
 import Progress from './components/Progress';
 import Landing from './components/Landing'
@@ -11,14 +9,12 @@ import Signup from "./components/Signup";
 import Signin from "./components/Signin"
 
 import AuthState from './contexts/AuthState';
-import { AuthContext } from './contexts/AuthContext';
 const generateClassName = createGenerateClassName({
     productionPrefix: 'co',
 })
 
 function App() {
-    const auth=useContext(AuthContext)
-    const isLoggedIn=true
+   
     return (
         <AuthState>
         <BrowserRouter>

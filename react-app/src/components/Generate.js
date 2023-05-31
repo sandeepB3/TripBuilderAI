@@ -4,15 +4,11 @@ import axios from 'axios';
 import { AuthContext } from '../contexts/AuthContext';
 import '../styles/Itinerary.css';
 import { useNavigate } from 'react-router-dom';
-import Output from './Output';
-<<<<<<< HEAD
-=======
 import PriceBreakupChart from './PriceBreakup';
 import { makeStyles } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
 import PointsList from './PointList';
 import { red } from '@material-ui/core/colors';
->>>>>>> 7cb185a (new)
 
 //Storing output objects of api calls
 let optimalHotel = {};
@@ -39,7 +35,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 //API Key
-const key = '45d4cf1702mshdf80baf491e74fdp1c2157jsnc79ef27ef117'
+const key = 'd8a9ea8d9dmshee6897729180752p10ef30jsn949f30e07e0e'
 
 function Generate() {
   const classes = useStyles();
@@ -56,7 +52,7 @@ function Generate() {
     if(!auth.state.isLoggedIn){
       navigate("/auth/signin")
     }
-  },[]);
+  },[auth.state.isLoggedIn, navigate]);
 
   const [destination, setDestination] = useState('');
   const [startDate, setStartDate] = useState('');
@@ -109,6 +105,7 @@ function Generate() {
       setEndDate("");
       setBudget("");
     } catch (e) {
+      setIsGenerating(false);
       console.log(e);
     }
   };
@@ -168,19 +165,6 @@ function Generate() {
         },
       };
 
-      // axios.request(hotels).then(function (response) {
-      //   response.hotels[0].
-      // }).catch(function (error) {
-      //   console.error(error);
-      // });
-
-      // for (let i = 0; i < response.data.hotels.length; i++) {
-      //     const hotel = response.data.hotels[i];
-      //     if (hotel.price <= stay_budget) {
-      //       const hotelid = hotel.hotelId;
-      //       break; //
-      // }
-
       try {
         const response2 = await axios.request(hotels);
         const filteredRes = response2.data.data.hotels.filter(
@@ -232,19 +216,18 @@ function Generate() {
           }
           console.log(attractions);
         } catch (err) {
+          setIsGenerating(false);
           console.log(err);
         }
       } catch (err) {
+        setIsGenerating(false);
         console.log(err);
       }
       gptPrompt();
     } catch (err) {
+      setIsGenerating(false);
       console.log(err);
     }
-    
-
-    
-
    
   };
 
@@ -263,73 +246,13 @@ function Generate() {
             Itinerary
           </Typography>
           <br />
-          {/* <div className='api-output'>
-            <Typography  
-              variant="h6"
-              align="justify"
-              color="inherit"
-              style={{ fontWeight: 600 }}
-            >
-              {apiOutput}
-            </Typography> */}
             <div>
-            <PointsList points={points}/>
+            {apiOutput}
           </div>  
         </div>
     
         </>
       ) : (
-<<<<<<< HEAD
-        <form className="travel-form" onSubmit={handleSubmit}>
-          {/* <h2>{auth.state.isLoggedIn ? "LoggedIn" : "Who are you"}</h2> */}
-          <h2 style={{ textAlign: "center" }}>Plan Your Adventure</h2>
-          <label>
-            Destination:
-            <input
-              type="text"
-              value={destination}
-              onChange={(event) => setDestination(event.target.value)}
-            />
-          </label>
-          <br />
-          <label>
-            Start Date:
-            <input
-              type="date"
-              value={startDate}
-              onChange={(event) => setStartDate(event.target.value)}
-            />
-          </label>
-          <br />
-          <label>
-            End Date:
-            <input
-              type="date"
-              value={endDate}
-              onChange={(event) => setEndDate(event.target.value)}
-            />
-          </label>
-          <br />
-          <label>
-            Budget:
-            <input
-              type="number"
-              value={budget}
-              onChange={(event) => setBudget(event.target.value)}
-            />
-          </label>
-          <br />
-          <div className="prompt-buttons">
-            <button type="submit">
-              <div className="generate">
-                {isGenerating ? (
-                  <span className="loader"></span>
-                ) : (
-                  <p>Plan My Trip</p>
-                )}
-              </div>
-            </button>
-=======
         
         <div className={classes.container}>
           <div className='right'>
@@ -404,7 +327,6 @@ function Generate() {
           <div style={{ textAlign: 'center' }}>
             <p style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '10px' }}>Total Budget:</p>
             <p style={{ fontSize: '24px', fontWeight: 'bold' }}>{budget}</p>
->>>>>>> 7cb185a (new)
           </div>
           <div style={{ textAlign: 'center' }}>
             <p style={{ fontSize: '18px', fontWeight: 'bold', marginBottom: '10px' }}>Budget allocated for travel:</p>

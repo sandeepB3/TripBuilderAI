@@ -5,8 +5,6 @@ import Toolbar from '@material-ui/core/Toolbar';
 import { makeStyles } from '@material-ui/core/styles';
 import { Link as RouterLink } from 'react-router-dom';
 import { TbAffiliateFilled } from "react-icons/tb";
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { solid, regular, brands, icon } from '@fortawesome/fontawesome-svg-core/import.macro' // <-- import styles to be used
 import { AuthContext } from '../contexts/AuthContext';
 import axios from 'axios';
 const useStyles = makeStyles((theme) => ({
@@ -70,7 +68,7 @@ export default function Header({ isSignedIn, onSignOut }) {
   };
   const onLogout=async()=>{
     auth.setState(false);
-    const response = await axios.get('http://localhost:4000/login')
+    await axios.get('http://localhost:4000/login')
   }
   return (
     <React.Fragment>
@@ -86,18 +84,6 @@ export default function Header({ isSignedIn, onSignOut }) {
         <TbAffiliateFilled style={{width: '50px', height: '50px'}}/>
         </RouterLink>
         </div>
-        
-          {/* <Typography
-            variant="h6"
-            color="inherit"
-            noWrap
-            component={RouterLink}
-            to="/"
-          > */}
-            {/* <FontAwesomeIcon icon={solid('user-secret')} /> */}
-
-            
-          {/* </Typography> */}
           {auth.state.isLoggedIn? 
           <Button
             color="primary"
