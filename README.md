@@ -70,27 +70,35 @@ Install dependencies
   npm install
 ```
 
-Create .env file & fill the env variables as shown above
+Create .env file in backend folder & fill the env variables as shown above
 
 ```bash
   touch .env
 ```
 
-Start both the server - Both run independently on different ports
+Start both client and the server - Both run independently on different ports
 
 ```bash
-  npm start
+  npm start - client
+```
+```bash
+  nodemon index.js - server
 ```
 ## Tech Stack
 
-**Client:** React, MaterialUI, 
+**Client:** React, MaterialUI, Context
 
-**Server:** Node, Express, API's
+**Server:** Node, Express, OpenAI, API's, MongoDB
 
 ## Screenshots
+<img width="1440" alt="Screenshot 2023-05-31 at 10 18 36 AM" src="https://github.com/sandeepB3/TripBuilderAI/assets/107111616/0af3c3d9-2bfd-4b52-8d54-c9763bdb225e">
+<img width="1440" alt="Screenshot 2023-05-31 at 10 18 49 AM" src="https://github.com/sandeepB3/TripBuilderAI/assets/107111616/3d8096e8-f0c2-471e-bebd-0765e050dfb9">
+<img width="1440" alt="Screenshot 2023-05-31 at 10 26 56 AM" src="https://github.com/sandeepB3/TripBuilderAI/assets/107111616/e0ff8e41-c153-4bbf-bdad-ed14e25aa0c1">
+<img width="1440" alt="Screenshot 2023-05-31 at 2 33 09 PM" src="https://github.com/sandeepB3/TripBuilderAI/assets/107111616/79ad0d07-fc4f-409f-8bbb-b2d48d20868c">
+**The Itinerary Page has not been styled yet - Contributions are welcomed**
 
 ## Future Scope
 
-- Support for accessibility feature - Speech-to-Text 
+- Support for accessibility feature - Map Box
 - Dark / Light mode - Toggle UI
-- Conversation Mode - Provides parallel translation in a conversation format acting as a handy translator between two users.
+- Conversation Mode - Converse with AI to update the Itinerary
